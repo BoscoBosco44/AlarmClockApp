@@ -2884,3 +2884,24 @@
   --aug-bl1-height: 35.7142857%;
   --aug-bl1-width: 72.1687836%;
 }
+
+
+.testAugUI {
+    --aug-border: initial;
+    --aug-border-all: 0.25rem;
+    --aug-border-bg: var(--hot-red);
+    padding: 1rem;
+    position: relative;
+    background: var(--c1);
+    color: var(--c1-i);
+/*    --aug-tl: 1.5rem;
+    --aug-tr: 1.5rem;
+    --aug-l: 1rem;*/
+    --aug-l-extend1: 70%;
+/*    --aug-r: 1rem;*/
+    --aug-r-extend1: 50%;
+/*    --aug-bl: 1rem;
+    --aug-br: 1rem;*/
+    margin-bottom: 2rem;
+    transform-origin: 50% 50%;
+}

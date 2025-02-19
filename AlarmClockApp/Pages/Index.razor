@@ -11,9 +11,6 @@
 
     <div class="body">
 
-
-
-
     <div class="border1 d-flex justify-content-between align-items-center">
 
         <div class="innderBorder1 d-flex justify-content-between align-items-center">
@@ -32,7 +29,7 @@
 
                 <div class="d-flex flex-column justify-content-around align-items-center">
                     <p>Set Alarm:</p>
-                    <input class="cyberpunk" id="alarmTimeEF" @bind="alarm.alarmTime" type="time" />
+                    <input id="alarmTimeEF" @bind="alarm.alarmTime" type="time" />
                 </div>
 
 
@@ -53,7 +50,33 @@
     <SevenSegDigetDisplay Digit="0" />
 </div>
 
+<div class="d-flex justify-content-center align-items-center w-100 border border-danger" style="height: 500px;">
+    <div data-augmented-reset>
+        <div data-augmented-ui="tl-clip br-clip both" class="styleme">
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+<div data-augmented-ui="tl-clip br-clip both" class="styleme">
+    <br />
+    <br />
+</div>
 
+<div data-augmented-ui="tl-2-clip-x --aug-tl-extend2 tr-clip-x r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="styleme p-5 m-2">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div data-augmented-ui="delegated-border tl-2-clip-x border" class="styleme">
+        <br />
+        <br />
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
 
 @* <svg xmlns=""http://www.w3.org/2000/svg"" width=""140px"" height=""200px"" viewBox=""0 -2 10 22"">  *@
 @*     <g class=""digit1""> *@
