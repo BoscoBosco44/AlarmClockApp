@@ -5,7 +5,34 @@
 @using AlarmClockApp.Data;
 
 
+@*---------- nav bar tabs ----------*@
 
+<div class="d-flex justify-content-center align-items-center w-100 border border-danger" style="height: 50px;">
+    <div data-augmented-reset class="d-flex">
+        <div data-augmented-ui="tl-clip br-clip both" class="navBarTabA"></div>
+        <div data-augmented-ui="tl-clip br-clip both" class="navBarTabB"></div>
+        <div data-augmented-ui="tl-clip-x tr-clip-x both" class="navBarTabCurrentTab">
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+
+@*---------- alarm clock ----------*@
+<div data-augmented-ui=" tl-clip tr-clip-x  r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI">
+    <br />
+    <br />
+    <br />
+    <br />
+    @* <div data-augmented-ui="delegated-border tl-2-clip-x border" class="styleme"> *@
+    @*     <br /> *@
+    @*     <br /> *@
+    @* </div> *@
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
 
 <div data-augmented-ui="tl-clip-x tr-clip-x r-clip-xy bl-clip both" class="styleme p-5">
 
@@ -50,7 +77,7 @@
     <SevenSegDigetDisplay Digit="0" />
 </div>
 
-<div class="d-flex justify-content-center align-items-center w-100 border border-danger" style="height: 500px;">
+<div class="d-flex justify-content-center align-items-center w-100 border border-danger" style="height: 50px;">
     <div data-augmented-reset>
         <div data-augmented-ui="tl-clip br-clip both" class="styleme">
             <br />
@@ -58,20 +85,20 @@
         </div>
     </div>
 </div>
-<div data-augmented-ui="tl-clip br-clip both" class="styleme">
+<div data-augmented-ui="tl-clip br-clip both" class="navBarTab">
     <br />
     <br />
 </div>
 
-<div data-augmented-ui="tl-2-clip-x --aug-tl-extend2 tr-clip-x r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="styleme p-5 m-2">
+<div data-augmented-ui="tl-2-clip-x --aug-tl-extend2 tr-clip-x r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI">
     <br />
     <br />
     <br />
     <br />
-    <div data-augmented-ui="delegated-border tl-2-clip-x border" class="styleme">
-        <br />
-        <br />
-    </div>
+    @* <div data-augmented-ui="delegated-border tl-2-clip-x border" class="styleme"> *@
+    @*     <br /> *@
+    @*     <br /> *@
+    @* </div> *@
     <br />
     <br />
     <br />
