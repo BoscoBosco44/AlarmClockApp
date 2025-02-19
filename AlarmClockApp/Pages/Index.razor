@@ -5,27 +5,13 @@
 @using AlarmClockApp.Data;
 
 
-<div class="body">
-
-    @* <div class="border1 d-flex justify-content-between align-items-center"> *@
-
-    @*     <div class="d-flex"> *@
-    @*         <p class="p-r-3">current day: @DateTime.Now.ToShortDateString()</p> *@
-
-    @*         <p>current time: @currentTime</p> *@
-    @*     </div> *@
 
 
-    @*     <h2>⏰Alarm Time: @alarm.alarmTimeString</h2> *@
+<div data-augmented-ui="tl-clip-x tr-clip-x r-clip-xy bl-clip both" class="styleme p-5">
 
-    @*     <div> *@
-    @*         <h3>Set time: </h3> *@
-    @*         <input @bind="alarmTimeString" /> *@
-    @*         <button class="btn btn-primary" @onclick="SetAlarm">Update</button> *@
-    @*     </div> *@
+    <div class="body">
 
 
-    @* </div> *@
 
 
     <div class="border1 d-flex justify-content-between align-items-center">
@@ -47,11 +33,13 @@
 
                 <div class="d-flex flex-column justify-content-around align-items-center">
                     <p>Set Alarm:</p>
-                    <input id="alarmTimeEF" @bind="alarm.alarmTime" type="time" />
+                    <input class="cyberpunk" id="alarmTimeEF" @bind="alarm.alarmTime" type="time" />
                 </div>
 
 
             </EditForm>
+
+
         </div>
 
 
@@ -60,11 +48,12 @@
 </div>
 
 <div>
-    
+
+</div>
+                
+    <SevenSegDigetDisplay Digit="0" />
 </div>
 
-
-<SevenSegDigetDisplay Digit="0" />
 
 
 @* <svg xmlns=""http://www.w3.org/2000/svg"" width=""140px"" height=""200px"" viewBox=""0 -2 10 22"">  *@
