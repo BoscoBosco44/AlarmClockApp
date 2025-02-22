@@ -20,18 +20,44 @@
 
 @*---------- alarm clock ----------*@
 <div data-augmented-ui=" tl-clip tr-clip-x  r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI">
-    <br />
-    <br />
-    <br />
-    <br />
-    @* <div data-augmented-ui="delegated-border tl-2-clip-x border" class="styleme"> *@
-    @*     <br /> *@
-    @*     <br /> *@
-    @* </div> *@
-    <br />
-    <br />
-    <br />
-    <br />
+
+    <div data-augment-ui-reset class="w-100 h-100">
+        <div class="row AlarmClockGridRow">
+            <div class="col col-5 tempRedBox">
+                <div data-augmented-ui="tr-clip bl-clip-y both" class="AlarmClockDissmissAndWeatherDiv">
+                    <br />
+                </div>
+            </div>
+        
+            <div class="col col-5 tempRedBox p-3">
+
+            </div>
+            
+            <div class="col col-5 tempRedBox p-3">
+
+                <div class="row row-cols-1 h-100">
+                    <div class="d-flex justify-content-right h-60 w-100">
+
+                        <div data-augmented-ui="tl-clip tr-clip br-clip bl-2-round-x both" class="AlarmClockBLtopDiv">
+                            <br />
+                        </div>
+                    </div>
+                
+                    <div data-augmented-ui="tl-clip tr-scoop-inset br-clip-x bl-clip both" class="AlarmClockBLbottomDiv">
+                        <br />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col col-5 tempRedBox">
+
+            </div>
+        </div>
+        
+
+
+    </div>
+
 </div>
 
 <div data-augmented-ui="tl-clip-x tr-clip-x r-clip-xy bl-clip both" class="styleme p-5">

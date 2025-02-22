@@ -2088,4 +2088,49 @@
 
 }
 
+.tempRedBox {
+    border: solid red 2px;
+    width: 50%;
+    height: 50%;
+}
+
+.AlarmClockGridRow {
+    width: 100%;
+    height: 100%;
+
+}
+
+.AlarmClockDissmissAndWeatherDiv {
+    --aug-border: initial;
+    --aug-border-all: 0.25rem;
+    --aug-border-bg: black;
+
+    --aug-bl-extend1: 5em;
+
+    width: 100%;
+    height: 100%;
+}
+
+.AlarmClockBLtopDiv {
+    --aug-border: initial;
+    --aug-border-all: 0.25rem;
+    --aug-border-bg: black;
+    --aug-bl-extend1: 5em;
+    width: 60%;
+    /*    height: 50%;
+*/
+    margin-left: 4em;
+    margin-bottom: -1em;
+    z-index: 1;
+}
+.AlarmClockBLbottomDiv {
+    --aug-border: initial;
+    --aug-border-all: 0.25rem;
+    --aug-border-bg: black;
+    --aug-bl-extend1: 5em;
+    width: 80%;
+
+    z-index:2;
+    opacity: 100;
+}
 
