@@ -2107,7 +2107,9 @@
 
     --aug-bl-extend1: 5em;
 
-    width: 100%;
+    margin-left: 2em;
+
+    width: 80%;
     height: 100%;
 }
 
@@ -2119,7 +2121,7 @@
     width: 60%;
     /*    height: 50%;
 */
-    margin-left: 4em;
+    margin-left: 5em;
     margin-bottom: -1em;
     z-index: 1;
 }
@@ -2128,7 +2130,10 @@
     --aug-border-all: 0.25rem;
     --aug-border-bg: black;
     --aug-bl-extend1: 5em;
+
     width: 80%;
+
+    margin-left: 1em;
 
     z-index:2;
     opacity: 100;
