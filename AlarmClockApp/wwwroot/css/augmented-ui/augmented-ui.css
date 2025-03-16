@@ -2022,19 +2022,28 @@
 /*---------------- Custom CSS ------------------*/
 
 .testAugUI {
-    height: 30em;
+    height: 35em;
+    width: 70%;
     --aug-border: initial;
     --aug-border-all: 0.25rem;
     --aug-border-bg: var(--color-dark);
-    padding: 1rem;
-    position: relative;
-    background: var(--c1);
-    color: red;
-/*    --aug-tl: 1.5rem;*/
+
+    margin: auto;
+
+    padding-top: 2em;
+    padding-left:2em;
+    padding-right:2em;
+    padding-bottom: 2em;
+
+/*    padding: 1rem;*/
+/*    position: relative;
+    background: var(--c1);*/
+    /*color: red;*/
+    --aug-tl: 1.5rem;
     --aug-tr: 1rem;
     --aug-l: 1rem;
     --aug-l-extend1: 30%;
-/*    --aug-r: 1rem;*/
+    --aug-r: 1rem;
     --aug-r-extend1: 50%;
 /*    --aug-bl: 1rem;
     --aug-br: 1rem;*/
@@ -2090,8 +2099,17 @@
 
 .tempRedBox {
     border: solid red 2px;
+
     width: 50%;
     height: 50%;
+}
+
+.blDiv {
+    padding-top: 1em;
+}
+
+.trDiv {
+    padding: 1em;
 }
 
 .AlarmClockGridRow {
@@ -2105,35 +2123,68 @@
     --aug-border-all: 0.25rem;
     --aug-border-bg: black;
 
-    --aug-bl-extend1: 5em;
+    --aug-tr:1em;
 
-    margin-left: 2em;
+    --aug-bl-inset1: 8em;
+    --aug-bl:1em;
 
+/*    margin-left: 2em;
+*/
     width: 80%;
     height: 100%;
 }
+
+.AlarmClockTrScreen {
+    margin: auto;
+
+    border: solid gray 3px;
+    border-radius: 2em;
+}
+.TrScreenContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 5px;
+    border-radius: 2em;
+}
+
 
 .AlarmClockBLtopDiv {
     --aug-border: initial;
     --aug-border-all: 0.25rem;
     --aug-border-bg: black;
-    --aug-bl-extend1: 5em;
+
+    --aug-bl-extend1: 65%;
+
+    --aug-tl:1em;
+    --aug-tr:1em;
+    --aug-bl:1em;
+    --aug-br:1em;
+
+    --aug-b-inset1:1em;
+
     width: 60%;
-    /*    height: 50%;
-*/
-    margin-left: 5em;
-    margin-bottom: -1em;
+    /*    height: 50%;*/
+    margin-left: 25%;
+        margin-bottom: -1em;
     z-index: 1;
 }
 .AlarmClockBLbottomDiv {
     --aug-border: initial;
     --aug-border-all: 0.25rem;
     --aug-border-bg: black;
-    --aug-bl-extend1: 5em;
+
+    --aug-br-inset1: 45%;
+    --aug-tr-inset2:20%;
+
+    --aug-tl:1em;
+    --aug-bl:1em;
 
     width: 80%;
 
     margin-left: 1em;
+    margin-bottom:-1em;
 
     z-index:2;
     opacity: 100;
