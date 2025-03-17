@@ -2021,6 +2021,11 @@
 
 /*---------------- Custom CSS ------------------*/
 
+.bg-orange {
+    background-color: orange;
+}
+
+
 .testAugUI {
     height: 35em;
     width: 70%;
@@ -2190,3 +2195,25 @@
     opacity: 100;
 }
 
+.AlarmClockControlsDiv {
+    display: flex; 
+    border: solid 1px gray;
+    margin-top: 1em;
+}
+
+.controlsInputBox1 {
+    margin: auto;
+}
+.controlsInputBox2 {
+    justify-content: center;
+    align-items: center;
+}
+.controlsTrianglesUp {
+    display: flex;
+}
+.singleDigetInputBox {
+    width: 32px;
+}
+.customButton1 {
+    --aug-bl:1em;
+}
