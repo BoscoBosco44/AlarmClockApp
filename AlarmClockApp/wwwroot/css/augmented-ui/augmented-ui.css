@@ -2019,44 +2019,44 @@
 }
 
 
-/*---------------- Custom CSS ------------------*/
+/*------------------------------------------------ Custom CSS --------------------------------------------------*/
 
+/*---------------- general CSS ------------------*/
+
+.bg-black0 {
+    background-color: rgb(31, 31, 31);
+    /*    background-color: rgb(18, 18, 18);*/
+}
+.bg-black2 {
+    background-color: rgb(5, 5, 5);
+}
+.bg-gray {
+    background-color: rgb(51, 51, 51);
+}
+.bg-gray2 {
+    background-color: rgb(41, 41, 41);
+}
+
+
+.bg-red {
+    background-color: red;
+}
+.bg-red2 {
+    background-color:crimson;
+}
 .bg-orange {
     background-color: orange;
 }
-
-
-.testAugUI {
-    height: 35em;
-    width: 70%;
-    --aug-border: initial;
-    --aug-border-all: 0.25rem;
-    --aug-border-bg: var(--color-dark);
-
-    margin: auto;
-
-    padding-top: 2em;
-    padding-left:2em;
-    padding-right:2em;
-    padding-bottom: 2em;
-
-/*    padding: 1rem;*/
-/*    position: relative;
-    background: var(--c1);*/
-    /*color: red;*/
-    --aug-tl: 1.5rem;
-    --aug-tr: 1rem;
-    --aug-l: 1rem;
-    --aug-l-extend1: 30%;
-    --aug-r: 1rem;
-    --aug-r-extend1: 50%;
-/*    --aug-bl: 1rem;
-    --aug-br: 1rem;*/
-    --aug-b-extend1:50%;
-    margin-bottom: 2rem;
-/*    transform-origin: 50% 50%;*/
+.bg-orange2 {
+    background-color: darkgoldenrod;
 }
 
+.customButton1 {
+    --aug-bl: 1em;
+    width: 100%;
+}
+
+/*---------------- nav bar CSS ------------------*/
 .navBarTabA {
     height: 1em;
     width: 2em;
@@ -2084,6 +2084,49 @@
     color: black;
     z-index: 1;
 }
+
+.navBarClock {
+    --aug-tl-extend1: 2em;
+    width: 10em;
+    height: 2em;
+}
+
+
+/*---------------- specific CSS ------------------*/
+
+
+.testAugUI {
+    height: 35em;
+    width: 70%;
+    --aug-border: initial;
+    --aug-border-all: 0.25rem;
+    --aug-border-bg: var(--color-dark);
+
+    margin: auto;
+
+    padding-top: 2em;
+    padding-left:2em;
+    padding-right:2em;
+    padding-bottom: 2em;
+
+/*    padding: 1rem;*/
+/*    position: relative;
+    background: var(--c1);*/
+    /*color: red;*/
+    --aug-tl: 1.5rem;
+    --aug-tr: 1rem;
+    --aug-l: 1rem;
+    --aug-l-extend1: 30%;
+    --aug-r-: 2em;
+    --aug-r: 1rem;
+    --aug-r-extend1: 50%;
+/*    --aug-bl: 1rem;
+    --aug-br: 1rem;*/
+    --aug-b-extend1:50%;
+    margin-bottom: 2rem;
+/*    transform-origin: 50% 50%;*/
+}
+
 
 .navBarTabCurrentTab {
     height: 1em;
@@ -2152,6 +2195,8 @@
     align-items: center;
     border: solid black 5px;
     border-radius: 2em;
+
+    background-color: gray;
 }
 
 
@@ -2197,16 +2242,21 @@
 
 .AlarmClockControlsDiv {
     display: flex; 
+    justify-content:space-between;
+    align-items: center;
     border: solid 1px gray;
     margin-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .controlsInputBox1 {
-    margin: auto;
+/*    margin: auto;*/
 }
 .controlsInputBox2 {
     justify-content: center;
     align-items: center;
+    
 }
 .controlsTrianglesUp {
     display: flex;
@@ -2214,6 +2264,39 @@
 .singleDigetInputBox {
     width: 32px;
 }
-.customButton1 {
-    --aug-bl:1em;
+.controlsInputBox1Col {
+/*    width: 1em;*/
+    padding-right: 0.1em;
+    padding-left: 0.1em;
+}
+
+
+.tempClassName-bottomRightButtons {
+    height: 60%;
+    width: 70%;
+/*    margin-top: -3em;*/
+    margin-bottom: -1em;
+}
+
+/*---------- fish tank ---------*/
+
+
+.fishTank {
+    --aug-tl: 1em;
+    --aug-bl: 1em;
+    --aug-tr: 1em;
+    --aug-br: 1em;
+    --aug-tl-extend2: 9em;
+    --aug-bl-extend1: 9em;
+
+    background-image: url('../../Images/RelaxingFishTankGIF.gif');
+    background-position-y: 0em;
+
+    background-color: deepskyblue;
+
+    margin-right: -2em;
+    margin-bottom: -1em;
+
+    width: 90%;
+    height: 60%;
 }

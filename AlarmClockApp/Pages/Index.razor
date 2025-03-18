@@ -8,6 +8,9 @@
 @*---------- nav bar tabs ----------*@
 
 <div class="d-flex justify-content-center align-items-center w-100 border border-danger" style="height: 50px;">
+    <div data-augmented-reset>
+        <div data-augmented-ui="tl-clip tr-clip-x br-clip both" class="styleme navBarClock"></div>
+    </div>
     <div data-augmented-reset class="d-flex">
         <div data-augmented-ui="tl-clip br-clip both" class="navBarTabA"></div>
         <div data-augmented-ui="tl-clip br-clip both" class="navBarTabB"></div>
@@ -19,16 +22,19 @@
 </div>
 
 @*---------- alarm clock ----------*@
-<div data-augmented-ui=" tl-clip tr-clip-x  r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI">
+<div data-augmented-ui=" tl-clip tr-clip-x  r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI bg-black0">
 
     <div data-augment-ui-reset class="w-100 h-100">
         <div class="row AlarmClockGridRow">
+
+            @*------ tl ------*@
             <div class="col col-5 tempRedBox">
-                <div data-augmented-ui="tr-clip bl-clip-y both" class="AlarmClockDissmissAndWeatherDiv">
+                <div data-augmented-ui="tr-clip bl-clip-y both" class="AlarmClockDissmissAndWeatherDiv bg-gray">
                     <br />
                 </div>
             </div>
         
+            @*------ tr ------*@
             <div class="col col-5 tempRedBox trDiv">
                 <div class="AlarmClockTrScreen">
                     <div class="TrScreenContent">
@@ -40,47 +46,53 @@
                     </div>
                 </div>
 
-                <div class="AlarmClockControlsDiv ">
-                    <div class="controlsInputBox1 row w-50">
+                <div class="AlarmClockControlsDiv bg-gray">
+                    <div class="controlsInputBox1 row">
 
-                        <div class="col w-25 p-0">
+                        <div class="col controlsInputBox1Col">
                             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
                             <input class="singleDigetInputBox">
                             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
                         </div>
-                        <div class="col w-25 p-0">
-                            <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
-                            <input class="singleDigetInputBox">
-                            <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
-
-                        </div>
-                        <div class="col w-25 p-0">
+                        <div class="col controlsInputBox1Col">
                             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
                             <input class="singleDigetInputBox">
                             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
 
                         </div>
-                        <div class="col w-25 p-0">
+                        <div class="col controlsInputBox1Col">
+                            <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
+                            <input class="singleDigetInputBox">
+                            <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
+
+                        </div>
+                        <div class="col controlsInputBox1Col">
                             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
                             <input class="singleDigetInputBox">
                             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
 
                         </div>
                 </div>
+
+                    <button data-augmented-ui="all-hex-alt border" class="w-25 h-100 bg-red">
+                        <h3 class="cyberpunk">Set</h3>
+                        
+                    </button>
+
                 <div class="controlsInputBox2">
                             <div class="row">
-                                <div class="col">
-                                    <button data-augmented-ui="bl-clip both">test2</button>
+                                <div class="col-5">
+                                    <button data-augmented-ui="bl-clip both">Reset</button>
                                 </div>
-                                <div class="col">
-                                    <button data-augmented-ui="bl-clip both">test2</button>
+                                <div class="col-5">
+                                    <button data-augmented-ui="bl-clip both">Manual</button>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <button data-augmented-ui="bl-clip both">test2</button>
+                                <div class="col-5">
+                                    <button data-augmented-ui="bl-clip both">AM/PM</button>
                                 </div>
-                                <div class="col">
+                                <div class="col-5">
                                     <button data-augmented-ui="bl-clip both">test2</button>
                                 </div>
                             </div>
@@ -88,24 +100,33 @@
                     </div>
             </div>
             
+            @*------ bl ------*@
             <div class="col col-5 tempRedBox blDiv">
 
                 <div class="row row-cols-1 h-100">
                     <div class="d-flex justify-content-right h-60 w-100">
 
-                        <div data-augmented-ui="tl-clip tr-clip br-clip bl-2-round-x both" class="AlarmClockBLtopDiv">
+                        <div data-augmented-ui="tl-clip tr-clip br-clip bl-2-round-x both" class="AlarmClockBLtopDiv bg-gray">
                             <br />
                         </div>
                     </div>
                 
-                    <div data-augmented-ui="tl-clip tr-scoop-inset br-clip-x bl-clip both" class="AlarmClockBLbottomDiv">
+                    <div data-augmented-ui="tl-clip tr-scoop-inset br-clip-x bl-clip both" class="AlarmClockBLbottomDiv bg-gray">
                         <br />
                     </div>
                 </div>
             </div>
         
-            <div class="col col-5 tempRedBox">
+            @*------ br ------*@
+            <div class="col col-5 tempRedBox h-50 d-flex flex-column align-items-end">
+                <div data-augmented-ui="tl-2-clip-y tr-2-clip-y bl-2-clip-y both" class="tempClassName-bottomRightButtons">
+                    <br />
+                    <h4 class="cyberpunk"></h4>
+                </div>
 
+                <div data-augmented-ui="tl-2-clip-x tr-clip br-clip bl-2-clip-x border" class="fishTank">
+                    
+                </div>
             </div>
         </div>
         

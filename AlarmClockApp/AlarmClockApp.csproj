@@ -11,4 +11,8 @@
     <Folder Include="wwwroot\css\cyberpunk2077\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\RelaxingFishTankGIF.gif" />
+  </ItemGroup>
+
 </Project>
