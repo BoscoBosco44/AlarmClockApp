@@ -51,7 +51,7 @@
                         <h3 class="cyberpunk w-100"></h3>
                         <div data-augmented-ui="bl-clip-x both" class="bg-orange p-3">
                             <p>Time Remaining: XX Hr, XX Min, XX sec</p>
-                            <p>Time Remaining:</p>
+                            <p>@timeRemaining</p>
                         </div>
                     </div>
                 </div>
@@ -179,7 +179,8 @@
     private string? alarmTimeString = "";
     private string? alarmTime;
     private string? alarmTimeDisplay;
-    private string timeRemaining = "Time Remaining: XX Hr, XX Min, XX sec";
+    private TimeOnly timeRemaining;
+    private string timeRemainingStirng = "Time Remaining: XX Hr, XX Min, XX sec";
 
     protected override void OnInitialized()
     {
@@ -193,6 +194,11 @@
     private void UpdateTime(object state)
     {
         currentTime = DateTime.Now.ToString("HH:mm:ss");
+        if(timeRemaining > new TimeOnly(0))
+        {
+            var oneSecond = new TimeOnly(0, 0, 1)
+            timeRemaining = timeRemaining - oneSecond;
+        }
         InvokeAsync(StateHasChanged);
 
         // Trigger alarm if the current time matches the set alarm time
@@ -226,11 +232,10 @@
     void UpdateAlarmTime(int[] newTime) {
         int hours = (newTime[0] * 10) + newTime[1];
         int mins = (newTime[2] * 10) + newTime[3];
-        Console.WriteLine(hours + " " + mins);
-        Console.WriteLine();
+
         alarm.alarmTime = new TimeOnly(hours, mins, 0);
 
-        Console.WriteLine(alarm.alarmTime.ToString());
+        // Console.WriteLine(alarm.alarmTime.ToString());
         alarm.alarmTimeString = alarm.alarmTime.ToString();
 
         UpdateTimeRemaining();
@@ -239,8 +244,17 @@
     }
 
     void UpdateTimeRemaining() {
-        var timeRemaining = DateTime.Now.Date + alarm.alarmTime.ToTimeSpan();
+        var timeRemainingVar = DateTime.Now.TimeOfDay + alarm.alarmTime.ToTimeSpan();
         Console.WriteLine(timeRemaining.ToString());
+        Console.WriteLine(DateTime.Now.TimeOfDay);
+
+        timeRemaining = timeRemainingVar.ToString();
+
+        var timeHr = timeRemainingVar.Hours.ToString();
+        var timeMin = timeRemainingVar.Minutes.ToString();
+        var timeSec = timeRemainingVar.Seconds.ToString();
+        Console.WriteLine(timeR);
+
     }
 
     
