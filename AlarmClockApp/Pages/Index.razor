@@ -26,7 +26,7 @@
 </div>
 
 @*---------- alarm clock ----------*@
-<div data-augmented-ui=" tl-clip tr-clip-x  r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI bg-black0">
+<div data-augmented-ui="tl-clip tr-clip-x  r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI bg-black0">
 
     <div data-augment-ui-reset class="w-100 h-100">
         <div class="row AlarmClockGridRow">
@@ -34,24 +34,30 @@
             @*------ tl ------*@
             <div class="col col-5 tempRedBox">
                 <div data-augmented-ui="tr-clip bl-clip-y both" class="AlarmClockDissmissAndWeatherDiv bg-gray">
-                    <br />
+
+                    <div data-augment-ui-reset>
+                        <div data-augmented-ui="tr-clip bl-clip both" class="dismissButton bg-red">
+                            <h1>Dismiss</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
-        
+
             @*------ tr ------*@
             <div class="col col-5 tempRedBox trDiv">
                 <div class="AlarmClockTrScreen">
                     <div class="TrScreenContent">
                         <h1>@alarm.alarmTime</h1>
                         <h3 class="cyberpunk w-100"></h3>
-                        <div data-augmented-ui="t-clip-xy bl-clip-x both">
-                            <br />
+                        <div data-augmented-ui="bl-clip-x both" class="bg-orange p-3">
+                            <p>Time Remaining: XX Hr, XX Min, XX sec</p>
+                            <p>Time Remaining:</p>
                         </div>
                     </div>
                 </div>
 
             </div>
-            
+
             @*------ bl ------*@
             <div class="col col-5 tempRedBox blDiv">
 
@@ -59,31 +65,31 @@
                     <div class="d-flex justify-content-right h-60 w-100">
 
                         <div data-augmented-ui="tl-clip tr-clip br-clip bl-2-round-x both" class="AlarmClockBLtopDiv bg-gray">
-                           
+
                             <br />
                         </div>
                     </div>
-                
+
                     <div data-augmented-ui="tl-clip tr-scoop-inset br-clip-x bl-clip both" class="AlarmClockBLbottomDiv bg-gray">
                         <br />
                     </div>
                 </div>
             </div>
-        
+
             @*------ br ------*@
             <div class="col col-5 tempRedBox h-50 d-flex flex-column align-items-end">
                 <div data-augmented-ui="tl-2-clip-y tr-2-clip-y bl-2-clip-y both" class="tempClassName-bottomRightButtons">
                     <br />
-                    <AlarmClockControlButtons></AlarmClockControlButtons>
+                    <AlarmClockControlButtons OnAlarmTimeChanged="UpdateAlarmTime"></AlarmClockControlButtons>
                     <h4 class="cyberpunk"></h4>
                 </div>
 
                 <div data-augmented-ui="tl-2-clip-x tr-clip br-clip bl-2-clip-x border" class="fishTank">
-                    
+
                 </div>
             </div>
         </div>
-        
+
 
 
     </div>
@@ -94,42 +100,42 @@
 
     <div class="body">
 
-    <div class="border1 d-flex justify-content-between align-items-center">
+        <div class="border1 d-flex justify-content-between align-items-center">
 
-        <div class="innderBorder1 d-flex justify-content-between align-items-center">
-            <div class="d-flex">
-                <p class="p-r-3">@DateTime.Now.ToShortDateString()</p>
+            <div class="innderBorder1 d-flex justify-content-between align-items-center">
+                <div class="d-flex">
+                    <p class="p-r-3">@DateTime.Now.ToShortDateString()</p>
 
-                <p>current time: @currentTime</p>
-            </div>
-
-            <div class="d-flex flex-column justify-content-around align-items-center">
-                <h6>Alarm Time:</h6>
-                <h1>@alarm.alarmTime</h1>
-            </div>
-
-            <EditForm Model="@alarm">
-
-                <div class="d-flex flex-column justify-content-around align-items-center">
-                    <p>Set Alarm:</p>
-                    <input id="alarmTimeEF" @bind="alarm.alarmTime" type="time" />
+                    <p>current time: @currentTime</p>
                 </div>
 
+                <div class="d-flex flex-column justify-content-around align-items-center">
+                    <h6>Alarm Time:</h6>
+                    <h1>@alarm.alarmTime</h1>
+                </div>
 
-            </EditForm>
+                <EditForm Model="@alarm">
+
+                    <div class="d-flex flex-column justify-content-around align-items-center">
+                        <p>Set Alarm:</p>
+                        <input id="alarmTimeEF" @bind="alarm.alarmTime" type="time" />
+                    </div>
+
+
+                </EditForm>
+
+
+            </div>
 
 
         </div>
 
+    </div>
+
+    <div>
 
     </div>
 
-</div>
-
-<div>
-
-</div>
-                
     <SevenSegDigetDisplay Digit="0" />
 </div>
 
@@ -146,20 +152,7 @@
     <br />
 </div>
 
-<div data-augmented-ui="tl-2-clip-x --aug-tl-extend2 tr-clip-x r-clip-y br-clip b-clip-x bl-2-clip-y l-clip-y border" class="testAugUI">
-    <br />
-    <br />
-    <br />
-    <br />
-    @* <div data-augmented-ui="delegated-border tl-2-clip-x border" class="styleme"> *@
-    @*     <br /> *@
-    @*     <br /> *@
-    @* </div> *@
-    <br />
-    <br />
-    <br />
-    <br />
-</div>
+
 
 @* <svg xmlns=""http://www.w3.org/2000/svg"" width=""140px"" height=""200px"" viewBox=""0 -2 10 22"">  *@
 @*     <g class=""digit1""> *@
@@ -186,11 +179,16 @@
     private string? alarmTimeString = "";
     private string? alarmTime;
     private string? alarmTimeDisplay;
+    private string timeRemaining = "Time Remaining: XX Hr, XX Min, XX sec";
 
     protected override void OnInitialized()
     {
         timer = new Timer(UpdateTime, null, 0, 1000);
     }
+
+
+
+
 
     private void UpdateTime(object state)
     {
@@ -207,7 +205,7 @@
 
         if (alarm.alarmTime.Hour == DateTime.Now.TimeOfDay.Hours)
         {
-            
+
         }
     }
 
@@ -223,11 +221,27 @@
 
     }
 
-    //------- EditForm code;
+    int[] alarmTimeInput = new int[4];
 
+    void UpdateAlarmTime(int[] newTime) {
+        int hours = (newTime[0] * 10) + newTime[1];
+        int mins = (newTime[2] * 10) + newTime[3];
+        Console.WriteLine(hours + " " + mins);
+        Console.WriteLine();
+        alarm.alarmTime = new TimeOnly(hours, mins, 0);
 
-    // fuction buildSevenSegDisplayNum(int numToDisplay, svgHtmlObject?) {
-    // toggle the classes of polygons a-h to display numToDisplay}
+        Console.WriteLine(alarm.alarmTime.ToString());
+        alarm.alarmTimeString = alarm.alarmTime.ToString();
+
+        UpdateTimeRemaining();
+
+        StateHasChanged();
+    }
+
+    void UpdateTimeRemaining() {
+        var timeRemaining = DateTime.Now.Date + alarm.alarmTime.ToTimeSpan();
+        Console.WriteLine(timeRemaining.ToString());
+    }
 
     
 

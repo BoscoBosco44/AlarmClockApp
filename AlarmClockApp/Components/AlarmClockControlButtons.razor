@@ -4,113 +4,160 @@
 
 
 <div class="AlarmClockControlsDiv bg-gray">
-                <div class="controlsInputBox1 row">
+    <div class="controlsInputBox1 row">
 
-                        <div class="col controlsInputBox1Col">
-                            <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
-                            <input class="singleDigetInputBox">
-                            <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
-                        </div>
-                        <div class="col controlsInputBox1Col">
-                            <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
-                            <input class="singleDigetInputBox">
-                            <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
+        <div class="col controlsInputBox1Col">
+            <div data-augmented-ui="all-hexangle-up border" class="bg-orange" @onclick="() => IncreeseDigit(0)"></div> 
+            @* why do I need a () => expression *@
+            <input class="singleDigetInputBox" id="0" placeholder="@alarmTimeInput[0]">
+            <div data-augmented-ui="all-hexangle-down border" class="bg-orange" @onclick="() => DecreeseDigit(0)"></div>
+        </div>
+        <div class="col controlsInputBox1Col">
+            <div data-augmented-ui="all-hexangle-up border" class="bg-orange" @onclick="() => IncreeseDigit(1)"></div>
+            <input class="singleDigetInputBox" id="1" placeholder="@alarmTimeInput[1]">
+            <div data-augmented-ui="all-hexangle-down border" class="bg-orange" @onclick="() => DecreeseDigit(1)"></div>
 
-                        </div>
-                        <div class="col controlsInputBox1Col">
-                            <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
-                            <input class="singleDigetInputBox">
-                            <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
+        </div>
+        <div class="col controlsInputBox1Col">
+            <div data-augmented-ui="all-hexangle-up border" class="bg-orange" @onclick="() => IncreeseDigit(2)"></div>
+            <input class="singleDigetInputBox" id="2" placeholder="@alarmTimeInput[2]">
+            <div data-augmented-ui="all-hexangle-down border" class="bg-orange" @onclick="() => DecreeseDigit(2)"></div>
 
-                        </div>
-                        <div class="col controlsInputBox1Col">
-                            <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div>
-                            <input class="singleDigetInputBox">
-                            <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div>
+        </div>
+        <div class="col controlsInputBox1Col">
+            <div data-augmented-ui="all-hexangle-up border" class="bg-orange" @onclick="() => IncreeseDigit(3)"></div>
+            <input class="singleDigetInputBox" id="3" placeholder="@alarmTimeInput[3]">
+            <div data-augmented-ui="all-hexangle-down border" class="bg-orange" @onclick="() => DecreeseDigit(3)"></div>
 
-                        </div>
-                </div>
-                
-                    <button data-augmented-ui="all-hex-alt border" class="w-25 h-100 bg-orange2">
-                        <h3 class="cyberpunk">Set</h3>
-                        
-                    </button>
+        </div>
+    </div>
 
-                <div class="controlsInputBox2">
-                            <div class="row">
-                                <div class="col-5">
-                                    <button data-augmented-ui="bl-clip both">Reset</button>
-                                </div>
-                                <div class="col-5">
-                                    <button data-augmented-ui="bl-clip both">Manual</button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-5">
-                                    <button data-augmented-ui="bl-clip both">AM/PM</button>
-                                </div>
-                                <div class="col-5">
-                                    <button data-augmented-ui="bl-clip both">test2</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
+    <button data-augmented-ui="all-hex-alt border" class="w-25 h-100 bg-orange2" @onclick="() => SetAlarmButton()">
+        <h3 class="cyberpunk">Set</h3>
+
+    </button>
+
+    <div class="controlsInputBox2">
+        <div class="row">
+            <div class="col-5">
+                <button data-augmented-ui="bl-clip both">Reset</button>
+            </div>
+            <div class="col-5">
+                <button data-augmented-ui="bl-clip both">Manual</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <button data-augmented-ui="bl-clip both">AM/PM</button>
+            </div>
+            <div class="col-5">
+                <button data-augmented-ui="bl-clip both">test2</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @code {
+    // EventCallback to pass the updated array to the parent (Index.razor)
+    [Parameter] public EventCallback<int[]> OnAlarmTimeChanged { get; set; }
+
+    int[] alarmTimeInput = { 0, 0, 0, 0};
+
+
+
+    public void DecreeseDigit(int id)
+    {
+        int curentCount = alarmTimeInput[id];
+        alarmTimeInput[id]--;
+
+        if(id == 0) {
+            if(alarmTimeInput[id] < 0){
+                alarmTimeInput[id] = 1;
+            }
+        }
+        if(id == 1) {
+            if(alarmTimeInput[0] == 0) {
+                if(alarmTimeInput[id] < 0){
+                    alarmTimeInput[id] = 9;
+                }
+            }
+            if (alarmTimeInput[0] == 1)
+            {
+                if (alarmTimeInput[id] < 0)
+                {
+                    alarmTimeInput[id] = 2;
+                }
+            }
+        }
+        if(id == 2) {
+            if (alarmTimeInput[id] < 0)
+            {
+                alarmTimeInput[id] = 5;
+            }
+        }
+        if(id == 3) {
+            if(alarmTimeInput[id] < 0){
+                alarmTimeInput[id] = 9;
+            }
+        }
+
+        //update display?
+        StateHasChanged();
+    }
+
+    public void IncreeseDigit(int id) {
+        int curentCount = alarmTimeInput[id];
+        alarmTimeInput[id]++;
+
+        if (id == 0)
+        {
+            if (alarmTimeInput[id] > 1)
+            {
+                alarmTimeInput[id] = 0;
+            }
+        }
+        if (id == 1)
+        {
+            if (alarmTimeInput[0] == 0)
+            {
+                if (alarmTimeInput[id] > 9)
+                {
+                    alarmTimeInput[id] = 0;
+                }
+            }
+            if (alarmTimeInput[0] == 1)
+            {
+                if (alarmTimeInput[id] > 2)
+                {
+                    alarmTimeInput[id] = 0;
+                }
+            }
+
+
+        }
+        if (id == 2)
+        {
+            if (alarmTimeInput[id] > 5)
+            {
+                alarmTimeInput[id] = 0;
+            }
+        }
+        if (id == 3)
+        {
+            if (alarmTimeInput[id] > 9)
+            {
+                alarmTimeInput[id] = 0;
+            }
+        }
+
+    }
+
+    public void SetAlarmButton() {
+        Console.WriteLine("AlarmClockControlButtons array val: " + alarmTimeInput.ToString());
+        OnAlarmTimeChanged.InvokeAsync(alarmTimeInput);
+    }
 
 }
 
 
 
-                                                @* <div class="AlarmClockControlsDiv bg-gray"> *@
-                @*     <div class="controlsInputBox1 row"> *@
-
-                @*         <div class="col controlsInputBox1Col"> *@
-                @*             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div> *@
-                @*             <input class="singleDigetInputBox"> *@
-                @*             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div> *@
-                @*         </div> *@
-                @*         <div class="col controlsInputBox1Col"> *@
-                @*             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div> *@
-                @*             <input class="singleDigetInputBox"> *@
-                @*             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div> *@
-
-                @*         </div> *@
-                @*         <div class="col controlsInputBox1Col"> *@
-                @*             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div> *@
-                @*             <input class="singleDigetInputBox"> *@
-                @*             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div> *@
-
-                @*         </div> *@
-                @*         <div class="col controlsInputBox1Col"> *@
-                @*             <div data-augmented-ui="all-hexangle-up border" class="bg-orange"></div> *@
-                @*             <input class="singleDigetInputBox"> *@
-                @*             <div data-augmented-ui="all-hexangle-down border" class="bg-orange"></div> *@
-
-                @*         </div> *@
-                @*     </div> *@
-
-                @*     <button data-augmented-ui="all-hex-alt border" class="w-25 h-100 bg-orange2"> *@
-                @*         <h3 class="cyberpunk">Set</h3> *@
-
-                @*     </button> *@
-
-                @* <div class="controlsInputBox2"> *@
-                @*             <div class="row"> *@
-                @*                 <div class="col-5"> *@
-                @*                     <button data-augmented-ui="bl-clip both">Reset</button> *@
-                @*                 </div> *@
-                @*                 <div class="col-5"> *@
-                @*                     <button data-augmented-ui="bl-clip both">Manual</button> *@
-                @*                 </div> *@
-                @*             </div> *@
-                @*             <div class="row"> *@
-                @*                 <div class="col-5"> *@
-                @*                     <button data-augmented-ui="bl-clip both">AM/PM</button> *@
-                @*                 </div> *@
-                @*                 <div class="col-5"> *@
-                @*                     <button data-augmented-ui="bl-clip both">test2</button> *@
-                @*                 </div> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@

@@ -2053,6 +2053,7 @@
 
 .customButton1 {
     --aug-bl: 1em;
+    padding-left:1em;
     width: 100%;
 }
 
@@ -2193,6 +2194,9 @@
 
 }
 
+
+/*------------ top left (tl) CSS --------------*/
+
 .AlarmClockDissmissAndWeatherDiv {
     --aug-border: initial;
     --aug-border-all: 0.25rem;
@@ -2205,9 +2209,28 @@
 
 /*    margin-left: 2em;
 */
+    padding: 1em;
     width: 80%;
     height: 100%;
 }
+
+.dismissButton {
+    --aug-bl: 1em;
+    --aug-tr:1em;
+    --aug-inlay-all: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    width: 100%;
+    height: 5em;
+}
+
+
+/*------------ top right (tr) CSS --------------*/
+
 
 .AlarmClockTrScreen {
     margin: auto;
@@ -2228,6 +2251,8 @@
 
     background-color: gray;
 }
+
+/*------------ bottom left (bl) CSS --------------*/
 
 
 .AlarmClockBLtopDiv {
@@ -2269,6 +2294,9 @@
     z-index:2;
     opacity: 100;
 }
+
+/*------------ bottom right (br) CSS --------------*/
+
 
 .AlarmClockControlsDiv {
     display: flex; 
