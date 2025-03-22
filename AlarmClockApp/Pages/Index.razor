@@ -5,6 +5,9 @@
 @using AlarmClockApp.Data;
 
 
+<CascadingValue Name="alarmParam" Value="alarm">
+
+
 @*---------- nav bar tabs ----------*@
 
 <div class="d-flex justify-content-center align-items-end w-100 border border-danger">
@@ -35,28 +38,12 @@
 
             @*------ tl ------*@
             <div class="col col-5 tempRedBox">
-                <div data-augmented-ui="tr-clip bl-clip-y both" class="AlarmClockDissmissAndWeatherDiv bg-gray">
-
-                    <div data-augment-ui-reset>
-                        <div data-augmented-ui="tr-clip bl-clip both" class="dismissButton bg-red">
-                            <h1>Dismiss</h1>
-                        </div>
-                    </div>
-                </div>
+                <DismissBox></DismissBox>
             </div>
 
             @*------ tr ------*@
             <div class="col col-5 tempRedBox trDiv">
-                <div class="AlarmClockTrScreen">
-                    <div class="TrScreenContent">
-                        <h1>@alarm.alarmTime</h1>
-                        <h3 class="cyberpunk w-100"></h3>
-                        <div data-augmented-ui="bl-clip-x both" class="bg-orange p-3">
-                            <p>@timeRemainingStirng</p>
-                            <p>@timeRemaining</p>
-                        </div>
-                    </div>
-                </div>
+                <AlarmInfoScreen></AlarmInfoScreen>
 
             </div>
 
@@ -169,10 +156,21 @@
 @*     </g> *@
 @* </svg> *@
 
+
+    <!-- Any descendant component rendered here will be able to access the cascading value. -->
+</CascadingValue>
+
+
+
+
+
+
 @code {
     private Alarm alarm = new();
     private Timer timer; //used to "count" and refresh seconds on clock
 
+    // [CascadingParameter(Name = "alarmParam")]
+    // private Alarm alarmParam { get; set; }
 
     //need to get the alarmTime by converting input into a dateTime 
 
@@ -199,6 +197,7 @@
         currentTimeString = DateTime.Now.ToString("HH:mm:ss"); //clock
         currentTime = DateTime.Now.TimeOfDay;
         UpdateTimeRemaining();
+        // alarmParam = alarm;
 
         InvokeAsync(StateHasChanged); //why is this async
 

@@ -2146,7 +2146,7 @@
 
 .testAugUI {
     height: 35em;
-    width: 70%;
+    width: 100%;
     --aug-border: initial;
     --aug-border-all: 0.25rem;
     --aug-border-bg: var(--color-dark);

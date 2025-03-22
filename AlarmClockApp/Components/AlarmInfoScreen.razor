@@ -1,0 +1,23 @@
+﻿@using AlarmClockApp.Components;
+@using AlarmClockApp.Data;
+
+<div class="AlarmClockTrScreen">
+                    <div class="TrScreenContent">
+                        <h1>@alarmParam.alarmTime</h1>
+                        <h3 class="cyberpunk w-100"></h3>
+                        <div data-augmented-ui="bl-clip-x both" class="bg-orange p-3">
+                            <p>@alarmParam.timeRemainingStirng</p>
+                            <p>@alarmParam.timeRemaining</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+@code {
+    [CascadingParameter(Name = "alarmParam")]
+    private Alarm alarmParam { get; set; }
+}
+
