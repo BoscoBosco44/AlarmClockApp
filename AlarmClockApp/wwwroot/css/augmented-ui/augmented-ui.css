@@ -2133,6 +2133,11 @@
 
     margin-right: 10em;
     margin-top: -2em;
+
+    display: flex;
+    align-content:end;
+    padding-left: 1em;
+    padding-top: 0.25em;
 }
 
 
@@ -2141,7 +2146,7 @@
 
 .testAugUI {
     height: 35em;
-    width: 100%;
+    width: 70%;
     --aug-border: initial;
     --aug-border-all: 0.25rem;
     --aug-border-bg: var(--color-dark);

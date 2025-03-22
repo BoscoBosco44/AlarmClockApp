@@ -9,7 +9,9 @@
 
 <div class="d-flex justify-content-center align-items-end w-100 border border-danger">
     <div data-augmented-reset>
-        <div data-augmented-ui="tl-clip tr-clip-x br-clip both" class="styleme navBarClock"></div>
+        <div data-augmented-ui="tl-clip tr-clip-x br-clip both" class="styleme navBarClock">
+            <p>@currentTimeString</p>
+        </div>
     </div>
     <div data-augmented-reset class="d-flex align-items-end">
         <div data-augmented-ui="tl-clip br-clip both" class="navBarTabA"></div>
@@ -50,7 +52,7 @@
                         <h1>@alarm.alarmTime</h1>
                         <h3 class="cyberpunk w-100"></h3>
                         <div data-augmented-ui="bl-clip-x both" class="bg-orange p-3">
-                            <p>Time Remaining: XX Hr, XX Min, XX sec</p>
+                            <p>@timeRemainingStirng</p>
                             <p>@timeRemaining</p>
                         </div>
                     </div>
@@ -106,7 +108,7 @@
                 <div class="d-flex">
                     <p class="p-r-3">@DateTime.Now.ToShortDateString()</p>
 
-                    <p>current time: @currentTime</p>
+                    <p>current time: @currentTimeString</p>
                 </div>
 
                 <div class="d-flex flex-column justify-content-around align-items-center">
@@ -168,19 +170,20 @@
 @* </svg> *@
 
 @code {
-    private Alarm? alarm = new();
-
+    private Alarm alarm = new();
     private Timer timer; //used to "count" and refresh seconds on clock
 
-    private string? currentTime;
 
     //need to get the alarmTime by converting input into a dateTime 
 
-    private string? alarmTimeString = "";
+    private string? currentTimeString;
+    private TimeSpan currentTime;
+    private string alarmTimeString = "";
     private string? alarmTime;
-    private string? alarmTimeDisplay;
-    private TimeOnly timeRemaining;
+    private TimeSpan timeRemaining;
     private string timeRemainingStirng = "Time Remaining: XX Hr, XX Min, XX sec";
+
+    int[] alarmTimeInput = new int[4]; //recives alarmTimeInput from AlarmClockControlButtons.razor
 
     protected override void OnInitialized()
     {
@@ -193,13 +196,11 @@
 
     private void UpdateTime(object state)
     {
-        currentTime = DateTime.Now.ToString("HH:mm:ss");
-        if(timeRemaining > new TimeOnly(0))
-        {
-            var oneSecond = new TimeOnly(0, 0, 1)
-            timeRemaining = timeRemaining - oneSecond;
-        }
-        InvokeAsync(StateHasChanged);
+        currentTimeString = DateTime.Now.ToString("HH:mm:ss"); //clock
+        currentTime = DateTime.Now.TimeOfDay;
+        UpdateTimeRemaining();
+
+        InvokeAsync(StateHasChanged); //why is this async
 
         // Trigger alarm if the current time matches the set alarm time
         // if (alarmTime.HasValue && DateTime.Now.TimeOfDay.Hours == alarmTime.Value.Hours &&
@@ -227,8 +228,6 @@
 
     }
 
-    int[] alarmTimeInput = new int[4];
-
     void UpdateAlarmTime(int[] newTime) {
         int hours = (newTime[0] * 10) + newTime[1];
         int mins = (newTime[2] * 10) + newTime[3];
@@ -244,19 +243,41 @@
     }
 
     void UpdateTimeRemaining() {
-        var timeRemainingVar = DateTime.Now.TimeOfDay + alarm.alarmTime.ToTimeSpan();
-        Console.WriteLine(timeRemaining.ToString());
-        Console.WriteLine(DateTime.Now.TimeOfDay);
+        var temp = DateTime.Now.TimeOfDay - alarm.alarmTime.ToTimeSpan();
 
-        timeRemaining = timeRemainingVar.ToString();
+        //get todays date
+        var todayDate = DateTime.Now.Day;
+        var month = DateTime.Now.Month;
+        var year = DateTime.Now.Year;
 
-        var timeHr = timeRemainingVar.Hours.ToString();
-        var timeMin = timeRemainingVar.Minutes.ToString();
-        var timeSec = timeRemainingVar.Seconds.ToString();
-        Console.WriteLine(timeR);
+
+        //create a 'alarmtime' var that is tomorrow + alarm.alarmTime which will be a DateTime of when the alarm will go off
+        DateTime tmr = (new DateTime(year, month, (todayDate + 1)));
+        var alarmTimeTmr = (tmr + alarm.alarmTime.ToTimeSpan());
+
+        // Console.WriteLine(alarmTimeTmr - DateTime.Now);
+        timeRemaining = alarmTimeTmr - DateTime.Now;
+
+        var timeHr = timeRemaining.Hours.ToString();
+        var timeMin = timeRemaining.Minutes.ToString();
+        var timeSec = timeRemaining.Seconds.ToString();
+        // Console.WriteLine("Time Remaining: " +
+        //                     timeHr  + " Hr," +
+        //                     timeMin + " Min, " + 
+        //                     timeSec + " sec");
+
+        timeRemainingStirng = "Time Remaining: " +
+                            timeHr + " Hr," +
+                            timeMin + " Min, " +
+                            timeSec + " sec";
+
 
     }
 
+    public void AmPmSwap()
+    {
+        currentTime.Add(TimeSpan.FromHours(12));
+    }
     
 
 }

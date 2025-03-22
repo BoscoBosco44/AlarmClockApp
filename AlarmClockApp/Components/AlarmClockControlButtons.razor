@@ -40,7 +40,7 @@
     <div class="controlsInputBox2">
         <div class="row">
             <div class="col-5">
-                <button data-augmented-ui="bl-clip both">Reset</button>
+                <button data-augmented-ui="bl-clip both" @onclick="() => ResetAlarm()">Reset</button>
             </div>
             <div class="col-5">
                 <button data-augmented-ui="bl-clip both">Manual</button>
@@ -153,9 +153,15 @@
     }
 
     public void SetAlarmButton() {
-        Console.WriteLine("AlarmClockControlButtons array val: " + alarmTimeInput.ToString());
+
         OnAlarmTimeChanged.InvokeAsync(alarmTimeInput);
     }
+    
+    public void ResetAlarm() {
+        alarmTimeInput = new int[] { 0, 0, 0, 0 };
+        OnAlarmTimeChanged.InvokeAsync(alarmTimeInput);
+    }
+
 
 }
 
